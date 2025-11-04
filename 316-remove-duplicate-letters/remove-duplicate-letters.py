@@ -1,9 +1,5 @@
 class Solution(object):
     def removeDuplicateLetters(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
         last_index = {}
         for index, ch in enumerate(s):
             last_index[ch] = index 
