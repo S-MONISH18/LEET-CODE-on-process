@@ -1,9 +1,17 @@
 class Solution(object):
     def findValidPair(self, s):
-        cnt = collections.Counter(s)
-        for i, c in enumerate(s):
-            if i == 0: continue
-            if s[i] != s[i - 1] and cnt[s[i]] == int(s[i]) and cnt[s[i - 1]] == int(s[i - 1]):
-                return s[i - 1: i + 1] 
+        freq = {}
+
+        # Count frequency of each digit
+        for ch in s:
+            freq[ch] = freq.get(ch, 0) + 1
+
+        # Check adjacent pairs
+        for i in range(len(s) - 1):
+            a = s[i]
+            b = s[i + 1]
+
+            if a != b and freq[a] == int(a) and freq[b] == int(b):
+                return a + b
+
         return ""
-        
