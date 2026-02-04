@@ -24,18 +24,18 @@ class Solution {
         // return head;
         if(head==null||head.next==null) return head;
 
-        ListNode extra=new ListNode();
-        extra.next=head;
-        ListNode d=extra;
-        while(d.next!=null && d.next.next!=null){
-            ListNode f=d.next;
-            ListNode s=d.next.next;
-            d.next=s;
-            f.next=s.next;
-            s.next=f;
-            d=d.next.next;
+        ListNode temp=new ListNode();
+        ListNode prev=temp;
+        prev.next=head;
+        while(prev.next!=null && prev.next.next!=null){
+            ListNode p1=prev.next;
+            ListNode p2=p1.next;
+            p1.next=p2.next;
+            p2.next=p1;
+            prev.next=p2;
+            prev=p1;
         }
-        return extra.next;
+        return temp.next;
 
     }
 }
